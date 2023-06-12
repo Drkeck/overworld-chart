@@ -6,4 +6,7 @@ there are a handful of ways we can impliment this but for now we are going to ex
 
 ## Notes
 
-Likely going to start with three.js
+- Likely going to start with three.js
+- made a small 3d model in blender to use in three.js
+- also going to use a test map [that i found on a reddit post.](https://www.reddit.com/r/inkarnate/comments/w109fx/alurna_just_a_good_ol_homebrew_fantasy_map_for_my/) its not mine and i wont claim it but it was used as an easy find example that can be refrenced. 
+  - this was stored in our `DOWNLOADS` section.
