@@ -8,8 +8,10 @@ const camera = new THREE.PerspectiveCamera(
     1,
     1000
 );
-const light = new THREE.AmbientLight( 0x404040 ); // soft white light
-scene.add( light );
+const amlight = new THREE.AmbientLight( 0x404040 ); // soft white light
+scene.add( amlight );
+const hemlight = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
+scene.add( hemlight );
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -22,19 +24,19 @@ document.body.appendChild(renderer.domElement);
 
 const loader = new GLTFLoader();
 
-loader.load('./public/test.glb', function (gltf) {
+loader.load('/test.glb', function (gltf) {
     scene.add(gltf.scene);
 }, undefined, function (error) {
     console.error(error)
 })
 
-camera.position.z = 5;
+camera.position.z = 4;
+camera.position.y = 1.25;
 
 
 function animate() {
 	requestAnimationFrame( animate );
-    camera.position.y = 1.92
-    camera.position.x = -1
+    scene.rotation.y += 0.01
 	renderer.render( scene, camera );
 }
 animate();
