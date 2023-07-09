@@ -1,7 +1,10 @@
+// imports
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 // scene setup
 const scene = new THREE.Scene();
+scene.background = new THREE.Color('#FFEECC')
 const camera = new THREE.PerspectiveCamera(
     45,
     window.innerWidth / window.innerHeight,
@@ -25,8 +28,14 @@ const loader = new GLTFLoader();
 loader.load('/test.glb', function (gltf) {
     scene.add(gltf.scene);
 }, undefined, function (error) {
-    console.error(error)
+    console.error("woopse");
 })
+
+const controls = new OrbitControls( camera, renderer.domElement );
+
+//controls.update() must be called after any manual changes to the camera's transform
+camera.position.set( 0, 20, 100 );
+controls.update();
 
 // current positoning given the 3d model subject to change.
 camera.position.z = 4;
@@ -35,7 +44,8 @@ camera.position.y = 1.25;
 
 function animate() {
 	requestAnimationFrame( animate );
-    scene.rotation.y += 0.01 // cute
+    // required if controls.enableDamping or controls.autoRotate are set to true
+	controls.update();
 	renderer.render( scene, camera );
 }
 animate();
