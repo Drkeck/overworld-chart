@@ -28,7 +28,7 @@ const loader = new GLTFLoader();
 loader.load('/test.glb', function (gltf) {
     scene.add(gltf.scene);
 }, undefined, function (error) {
-    console.error("woopse");
+    console.error(error);
 })
 
 const controls = new OrbitControls( camera, renderer.domElement );
@@ -40,7 +40,6 @@ controls.update();
 // current positoning given the 3d model subject to change.
 camera.position.z = 4;
 camera.position.y = 1.25;
-
 
 function animate() {
 	requestAnimationFrame( animate );
