@@ -47,4 +47,4 @@ function animate() {
 	controls.update();
 	renderer.render( scene, camera );
 }
-animate();
+animate(); //gotta call animate to have it loop properly.
