@@ -108,4 +108,4 @@ function animate() {
     requestAnimationFrame(animate);
     render()
 }
-animate();
+animate(); //gotta call animate to have it loop properly.
