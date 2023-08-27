@@ -47,7 +47,7 @@ loader.load('/test.glb', function (gltf) {
 loader.load('/waypoint.glb', function(gltf) {
     const glb = gltf.scene
     scene.add(glb)
-    glb.position.set(0,0,3)
+    glb.position.set( 0, 0, -3 )
     objects.push(glb)
     cities.push({
         uuid: glb.uuid,
@@ -90,17 +90,14 @@ function onPointerClick(event) {
     }
 }
 
-
 document.addEventListener('mousedown', onPointerClick);
 
-//controls.update() must be called after any manual changes to the camera's transform
-camera.position.set(0, 20, 100);
-
 //current positoning given the 3d model subject to change.
-camera.position.z = 4;
+camera.position.z = 14;
 camera.position.y = 1.25;
 
 function render() {
+    controls.update()
     renderer.render(scene, camera);
 }
 
